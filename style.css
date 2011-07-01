@@ -1,0 +1,732 @@
+/* perlets codety */
+
+.codeclass {
+    color: #f00;
+    background-color: #aaa;
+    font-size: 15px;
+}
+
+.syntaxhighlighter {
+    //background-color: #aaa;
+    padding: 10px 10px 10px 50px;
+}
+
+code { background-color: #eee; padding: 2px 5px 2px 5px; }
+
+/* -----------------------------------------------------------------------
+
+   tumbledry
+   Alex Micek
+
+   13 May 2011
+
+----------------------------------------------------------------------- */
+
+/* -----------------------------------------------------------------------
+   reset 
+   		YUI reset-min.css + Eric Schmidt's reset reloaded
+   utilities
+----------------------------------------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, 
+a, abbr, acronym, address, big, cite, 
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+body {
+	line-height: 1;
+	color: black;
+	background: white;
+}
+
+ol, ul, li {
+	list-style-type: none;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+
+blockquote, q {
+	quotes: "" "";
+}
+
+q:before,q:after{content:'';}
+
+fieldset,img {
+	border:0;
+}
+
+address,caption,cite,code,dfn,em,strong,th,var,optgroup {
+	font-style:inherit;font-weight:inherit;
+}
+
+del,ins {
+	text-decoration:none;
+}
+
+abbr,acronym {
+	border:0;
+	font-variant:normal;
+}
+
+input,button,textarea,select,optgroup,option {
+	font-family:inherit;
+	font-size:inherit;
+	font-style:inherit;
+	font-weight:inherit;
+}
+
+input,button,textarea,select{*font-size:100%;}
+
+.hide {position:absolute;text-indent:-5000px;display:block;width:0px;}
+.showgrid {background:url(../img/grid.png) 0 0 repeat}
+
+/* these HTML5 tags are treated differently
+	 Safari 5.0.3 displays these as block level
+	 Firefox 3.6 as inline
+*/ 
+article, section, hgroup, footer {
+	display: block;
+}
+
+#mach5 {
+    color: #ff0;
+    position: absolute;
+    display: block;
+    background-image: url(perl-mach5.png);
+}
+
+/* typography
+----------------------------------------------------------------------- */
+
+body {
+  text-align: center;
+  /* font: 14px/24px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  font: 19px/24px Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+  font: 17px/24px Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;  */
+  font-family: "Hoefler Text", Constantia, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif; 
+  font-size: 18px;
+  line-height: 24px;
+}
+
+strong {
+  font-weight: bold;
+  line-height: 20px;
+}
+
+em {
+  font-style: italic;
+  line-height: 20px;
+}		
+
+/* -----------------------------------------------------------------------
+	 h1 used to render the nav text using OS X's subpixel antialiasing,
+	 which far surpasses Photoshop's available text rendering options.
+----------------------------------------------------------------------- 
+
+#entablature h1 {
+  display:block;
+  font: 230px "MetroScript";
+	color: #ffaa00;
+}
+
+#entablature h1 .alt {
+  font-family: "MetroScript Alt";
+  display: inline;
+}
+
+#entablature h2 {
+	font: 28px "Verlag-Light";
+	word-spacing: 1px;
+	color: #525252;
+}
+*/
+
+/* logo + navigation
+----------------------------------------------------------------------- */
+
+#entablature {
+  width: 651px;
+  display: block;
+  position: relative;
+  margin: 0 auto 46px auto;
+}
+
+#entablature a {
+  border: none;
+}
+
+#entablature h1 a {
+  display: block;
+  text-indent: -5000px;
+  width: 655px;
+  height: 218px;
+  border: none;
+  background:url(perlets.png) 2px 0px no-repeat;  /* 2px -20px no-repeat for upper off */
+}
+
+#entablature h1 a:active, #entablature h1 a:focus {
+  background:url(perlets.png) 2px -258px no-repeat;
+}
+
+#entablature nav {
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 516px;
+  height: 28px;
+  padding: 36px 26px 22px 26px;
+}
+
+#entablature nav ul {
+  width: 516px;		/* width needed to trigger "hasLayout" IE Win */
+  overflow: auto;	/* http://quirksmode.org/css/clearing.html */
+}
+
+#entablature nav ul li {
+  display: block;
+  float: left;
+  text-indent: -5000px;
+}
+
+#entablature nav li a {
+  display: block;
+  float:left;
+}
+
+#entablature nav li.collection {
+  width: 120px;
+  height: 28px;
+  background:url(../img/collectionofwords.png) 0 0 no-repeat;
+}
+#entablature nav li.collection a {
+  width: 101px;
+  height: 28px;
+  margin-left: 19px;
+}
+#entablature nav li.collection a:hover, #entablature nav li.collection a:focus {
+  background:url(../img/collectionofwords.png) -19px -28px no-repeat;
+}
+#entablature nav li.collection a:active {
+  background:url(../img/collectionofwords.png) -19px -56px no-repeat;
+}
+
+#entablature nav li.words {
+  width: 99px;
+  height: 28px;
+  background:url(../img/collectionofwords.png) -120px 0 no-repeat;
+}
+#entablature nav li.words a {
+  width: 63px;
+  height: 28px;
+  margin-left: 36px;
+}
+#entablature nav li.words a:hover, #entablature nav li.words a:focus {
+  background:url(../img/collectionofwords.png) -156px -28px no-repeat;
+}
+#entablature nav li.words a:active {
+  background:url(../img/collectionofwords.png) -156px -56px no-repeat;
+}
+
+#entablature nav li.photos {
+  width: 136px;
+  height: 28px;
+  background:url(../img/collectionofwords.png) -219px 0 no-repeat;
+}
+#entablature nav li.photos a {
+  width: 82px;
+  height: 28px;
+  margin-left: 54px;
+}
+#entablature nav li.photos a:hover, #entablature nav li.photos a:focus {
+  background:url(../img/collectionofwords.png) -273px -28px no-repeat;
+}
+#entablature nav li.photos a:active {
+  background:url(../img/collectionofwords.png) -273px -56px no-repeat;
+}
+
+#entablature nav li.about {
+  width: 161px;
+  height: 28px;
+  background:url(../img/collectionofwords.png) -355px 0 no-repeat;
+}
+#entablature nav li.about a {
+  width: 121px;
+  height: 28px;
+  margin-left: 40px;
+}
+#entablature nav li.about a:hover, #entablature nav li.about a:focus {
+  background:url(../img/collectionofwords.png) -395px -28px no-repeat;
+}
+#entablature nav li.about a:active {
+  background:url(../img/collectionofwords.png) -395px -56px no-repeat;
+}
+
+/* links
+----------------------------------------------------------------------- */
+
+body a {
+	color: #000000;
+	text-decoration: none;
+	border-bottom: 1px solid #c8c8c8;
+  /* WebKit bug 6274: text repainting does not account for glyphs which draw
+  outside the typographic bounds of the font
+  https://bugs.webkit.org/show_bug.cgi?id=6274
+  https://bugs.webkit.org/show_bug.cgi?id=54599
+
+  17 Feb 2011, bug is still open
+  workaround is below:
+  */
+  text-rendering: optimizeLegibility;	
+}
+
+body a:hover, body a:focus {
+  color: #e80000;
+  border-color: #e80000;
+}
+
+body a:active {
+  color: #ffaa00;
+  border-color: #ffaa00;
+}
+
+a:visited {
+	xcolor: #878787;
+}
+
+/* main page containers
+----------------------------------------------------------------------- */
+article {
+	width: 600px;
+  position: relative; 	/* absolutely positioned children */
+  border-bottom: 1px solid #dbdbdb;
+  padding: 0 0 23px 0;
+  margin: 0 auto 48px auto;
+  text-align: left;
+}
+
+article header {
+  margin: 0;
+}
+
+article header h1 {
+  width: 86.66666%; /* 520px */
+  font-weight: bold;
+  font-size: 105.55555%; /* 19px */
+  margin: 0;
+}
+
+article header h1 a {
+	border-bottom: none;
+}
+
+article header h1:hover a {
+	border-bottom: 1px solid #c8c8c8;
+}
+
+article header h1 a:hover {
+	border-color: #e80000;
+}
+
+article header h1 a:active {
+	border-color: #ffaa00;
+}
+
+article p, article ul, article ol {
+	margin: 0 0 24px 0;
+}
+
+article ul li {
+	list-style-type: disc;
+}
+
+article ol li {
+	list-style-type: decimal;
+}
+
+article blockquote {
+	border-left: 1px solid #878787;
+	margin: 0 0 0 12px; /* 14px */
+	padding: 0 0 0 5px; /* 3px */
+}
+
+article blockquote p {
+  margin-left: 0.55555555em; /* 10px */
+}
+
+article ul {
+	padding-left: 1em; /* 18px */
+}
+
+article ol {
+	padding-left: 1.555555em; /* 28px */
+}
+
+
+/* images
+----------------------------------------------------------------------- */
+/* written into an article */
+article p img {
+	margin: 0;
+	padding: 0;
+}
+
+/* img posts */
+article img {
+	padding: 0 0 24px 0;
+	margin: 0 auto 0 auto;	
+	display:block;
+}
+
+a.img {
+	border: none;
+}
+
+a.img:active img {
+	opacity: 0.9;
+}
+
+a.img:focus img {
+	opacity: 0.7;
+}
+
+/* dates
+----------------------------------------------------------------------- */
+article time a {
+	border: none;
+	color: #878787;
+}
+
+article time {
+  display: block;
+  margin: 0 0 -24px 50%;
+  color: #878787;
+  position:relative;
+  top: -48px;
+  width: 48.3333333%;
+  text-align: right;
+}
+
+article header time {
+	width: 100%;
+  margin: 0 0 24px 0;
+  text-align: left;
+  position: static;
+  font-size: 1em;
+}
+
+/* tags
+----------------------------------------------------------------------- */
+.tag a {
+	border-color: #f5f5f5;
+	color: #c8c8c8;
+}
+
+.tag a:hover, .tag a:active {
+	border: none;
+}
+
+ul.tag {
+	margin: 0 0 24px 0;
+	padding: 0;
+	width: 100%;
+	overflow: hidden;
+}
+
+ul.tag li {
+	font-size: 16px;
+	margin-right: 10px;
+	float: left;
+	list-style-type: none;
+}
+
+/* comments
+----------------------------------------------------------------------- */
+.comments {
+	padding: 24px 0 0 0;
+	margin: -25px 0 0 0;
+	font-size: 0.8888888em; /* 16px */
+	border-top: 1px solid #dbdbdb;
+}
+
+.comments h1 {
+	font-weight: bold;
+}
+
+.comments article {
+	width: 560px;
+  padding: 0 20px 0 20px;
+  margin: 0 auto 24px 0;
+}
+
+.comments article p:last-child {
+	margin-bottom: 23px;
+}
+
+.comments article:last-child {
+	margin-bottom: -24px;
+}
+
+.comments form {
+	width: 580px;
+	margin: 0 0 0 20px;
+	overflow: hidden;
+}
+
+.comments fieldset {
+	float:left;
+	width: 173px;		/* (173+19)*3-19 = 557px (compare to textarea)*/
+  padding: 0 19px 0 0;
+  margin: -24px 0 24px 0;
+}
+
+.comments fieldset label {
+	margin-left: 1px;
+	position: relative;
+	top: 2px;
+	display: block;
+}
+
+.comments fieldset input {
+	width: 168px; 
+	height: 15px;
+	border: 1px solid #c8c8c8;
+	font-size: 14px;
+	padding: 3px 2px 2px 2px;
+	margin: -3px 0 0 0;
+}
+
+.comments fieldset.area {
+	float: none;
+	width: 560px;
+	margin: 0;
+}
+
+.comments fieldset.area textarea {
+	margin: 0 0 40px 0; 
+	padding: 10px; /* total width: 556px */
+	height: 122px;
+	width: 536px;
+	border: 1px solid #c8c8c8;
+	line-height: 1.5em;
+}
+
+.comments .info {
+  margin-left: 1em;
+  color: #c8c8c8;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.comments .error {
+	color: #e80000;
+	position: relative;
+	top: 4px;
+}
+
+.comments form img {
+	float: left;
+	margin: -19px 0 0 0;	
+}
+
+.comments article h2, .comments article h3, .comments article h4, .comments article h5, .comments article h6 {	
+/* IMPT: markdown is allowed in comments -- we control the appearance of marked down text by explicitly setting styles for comments */
+  font-weight:normal;
+}
+
+.comments form button {
+	float: right;
+	border: 1px solid #878787;
+	border-radius: 2px;
+	width: 174px;
+	margin: 2px 22px 24px 0;
+	padding: 3px 0 1px 0;
+	background: #dbdbdb;
+	cursor: pointer;
+}
+
+.comments form button:hover, .comments form button:focus {
+	background: #e7e7e7;
+}
+
+.comments form button:active {
+	background: #fff;
+	border-color: #000;
+}
+
+.comments fieldset.area textarea:focus, .comments fieldset input:focus {
+	border-color: #878787;
+}
+
+/* newest comments
+----------------------------------------------------------------------- */
+.newest {
+	display: none;				/* shown by js when required */
+	width: 600px;
+  position: relative; 	/* absolutely positioned children */
+  padding: 0 0 23px 0;
+  border-top: none;
+  margin: 70px auto 97px auto;	
+}
+
+.newest article h1 {
+	font-weight: normal;
+}
+
+/* voting
+----------------------------------------------------------------------- */
+
+.vote {
+  color: #c8c8c8;
+  font-size: 13px;
+  line-height: 16px;
+  position: relative;
+  top: -3px;
+  margin-left: 9px;
+}
+
+.vote a {
+	border: none;
+	color: inherit;
+	margin-left: -7px;
+	padding: 3px 7px 5px 7px;
+}
+
+.vote a:hover, .vote a:focus {
+	color: #fff;
+	background: #90D900;
+	border-radius: 4px;	
+}
+
+.vote a:active {
+	color: #fff;
+	background: #008B8B;
+	border-radius: 4px;	
+}
+
+/* meta
+----------------------------------------------------------------------- */
+span.new {
+	color: #e80000;
+	position: absolute;
+	left: -1em;
+	/* undo hide */
+	text-indent:0px;
+	display:inline;
+	width:auto;	
+}
+
+.comments span.new {
+	left: 0.1em;
+}
+
+/* footer
+----------------------------------------------------------------------- */
+footer {
+	width: 600px;
+	overflow: hidden;
+	margin: 0 auto 48px auto;
+	text-align: left;
+	position: relative;
+}
+
+footer h1 {
+	width: 33.33333%;
+	float: left;
+}
+
+footer p {
+	float:left;
+	width: 33.33333%;
+}
+
+/* forms
+----------------------------------------------------------------------- */
+
+article fieldset {
+	margin: 0 0 24px 0;
+}
+
+article textarea { 
+	padding: 10px; /* total width: 556px */
+	height: 300px;
+	width: 500px;	
+}
+
+/* tables
+----------------------------------------------------------------------- */
+article table td {
+	align: left;
+	padding-right: 15px;
+}
+
+/* alternate widths
+----------------------------------------------------------------------- */
+
+@media screen and (max-width: 600px) {
+  article, .meta, footer, footer h1, footer p {
+		width: 96%;
+  }
+  .meta {
+  	padding-left: 0;
+  	padding-right:0;
+  }
+	.comments article, fieldset.area, form {
+		width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+		margin-left: 0;
+	}
+	.comments article, fieldset.area, form {
+		font-size: 15px;
+	}
+  fieldset, footer h1, footer p {
+    float: none;
+  }
+  .comments form button {
+    margin: 0;
+  }
+  fieldset.area textarea {
+    width: 92%;
+  }
+}
+
+

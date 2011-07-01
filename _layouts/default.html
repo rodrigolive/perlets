@@ -1,0 +1,64 @@
+
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+  <title>perlets.org</title> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=640, initial-scale=0.47"> 
+  <meta name="robots" content="noindex, nofollow"> 
+  <link rel="shortcut icon" href="http://perlets.org/img/favicon.ico"> 
+  <link rel="apple-touch-icon-precomposed" href="http://perlets.org/img/apple-touch-icon-precomposed.png"> 
+  <!-- base href="http://perlets.org/" / --> 
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://perlets.org/all.rss" />  
+  <script type="text/javascript" src="/sh/scripts/shCore.js"></script>
+  <script type="text/javascript" src="/sh/scripts/shAutoloader.js"></script>
+  <script type="text/javascript" src="/sh/scripts/shBrushPerl.js"></script>
+  <link rel="stylesheet" href="/sh/styles/shCore.css" />  
+  <link rel="stylesheet" href="/sh/styles/shThemeDefault.css" />  
+  <link rel="stylesheet" href="/sh/styles/shThemeMidnight.css" />  
+  <link rel="stylesheet" href="/style.css" />  
+</head> 
+<body class=""> 
+
+<!-- img style="position:relative; float:right" src="perl-mach5.png" / -->
+
+    <header id="entablature"> 
+        <h1><a href="/">perlets</a></h1> 
+        <nav> 
+            <ul> 
+        <li class="collection">a <a href="archives/">collection</a></li> 
+        <li class="words">of <a href="words/">words</a></li> 
+        <li class="photos">and <a href="pictures/">pictures</a></li> 
+        <li class="about">by <a href="alex/">Alex Micek</a></li> 
+            </ul> 
+        </nav> 
+    </header> 
+ 
+  {{ content }}
+
+ 
+<article id="more"> 
+<p>&darr; <a href="all/page/2/">More</a></p> 
+</article> 
+ 
+<footer> 
+<section> 
+	<h1>perlets v1.0</h1> 
+	<p>&copy; 2011 rodrigolive</p> 
+</section> 
+</footer> 
+
+<script type="text/javascript">
+    SyntaxHighlighter.defaults['class-name'] = 'codeclass';
+    SyntaxHighlighter.defaults['gutter'] = false;
+    SyntaxHighlighter.autoloader(
+      'js jscript javascript  /sh/scripts/shBrushJScript.js',
+      'bash            /sh/scripts/shBrushBash.js',
+      'perl /sh/scripts/shBrushPerl.js'
+    );
+
+    SyntaxHighlighter.all();
+</script>
+ 
+</body> 
+</html> 

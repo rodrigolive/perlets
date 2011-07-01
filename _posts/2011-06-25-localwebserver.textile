@@ -1,0 +1,31 @@
+---
+layout: post
+title: A quick static webserver
+tags: any
+---
+ 
+Here's a quick-and-dirty static webserver based on Plack, useful while developing.
+
+Install plack:
+
+@cpan Plack@
+
+Then just create a file called @serve@ somewhere in your path.
+
+<pre class="brush: bash">
+plackup -MPlack::App::Directory -MCwd \
+   -e 'Plack::App::Directory->new(root => getcwd);' $@
+</pre>
+
+Then, from the root web project, do this:
+
+<pre class="brush: bash">
+cd mywebproject
+serve
+</pre>
+
+If you're using Windows, create a file named @serve.bat@, with the following content (replacing $\@ for %%, and double-quotes):
+
+<pre class="brush: bash">
+plackup -MPlack::App::Directory -MCwd -e "Plack::App::Directory->new(root => getcwd);" %%
+</pre>

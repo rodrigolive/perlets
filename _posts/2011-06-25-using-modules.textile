@@ -1,0 +1,43 @@
+---
+layout: post
+title: Using several modules at once
+tags: any
+---
+
+Sometimes you just feel tired of using a lot of modules on top of your Perl program everytime, even for the tiniest scripts.
+
+There's a module, @rig@, that will do just that.
+
+<pre class="brush: perl; class-name: codeclass">
+use rig modern, io; 
+
+my $yy = { foo=>'bar', baz=>10 };
+pp $yy;  # pretty print
+
+my $contents = io < 'file.txt';
+
+</pre>
+
+You can write your own rig via the @~/.perlrig@ YAML file. 
+
+Try writing your own with your favorite modules:
+
+<pre class="brush: js">
+fav:
+    use:
+       - strict
+       - File::Slurp:
+          - slurp 
+       - feature:
+          - say
+classy:
+    use:
+       - MooseX::Declare
+</pre>
+
+Then use it anywhere for a quick and stylish Perl from anywhere:
+
+<pre class="brush: bash">
+perl -Mrig=fav -e 'say slurp "file.txt"'
+</pre>
+
